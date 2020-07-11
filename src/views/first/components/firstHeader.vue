@@ -10,7 +10,7 @@
 				</span>
 			</router-link>
 			|
-			<router-link to="/city">
+			<router-link to="/index/city">
 				<span class="header-span">
 					北京
 				</span>
@@ -61,6 +61,6 @@ a
 	  color:#fff
 		.header-span
 		  font-size:.4rem
-	  
-  
+
+
 </style>

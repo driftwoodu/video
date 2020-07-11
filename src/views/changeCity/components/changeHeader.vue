@@ -1,7 +1,7 @@
 <template>
 	<div id="">
 		<div id="changeHeader">
-			<router-link to="/city">
+			<router-link to="/index/city">
 				<div class="iconfont left">
 					&#x9999;
 				</div>
@@ -11,11 +11,11 @@
 			</div>
 		</div>
 		<div class="ground">
-			
+
 		</div>
 	</div>
-		
-	
+
+
 </template>
 <script>
 export default{
@@ -45,5 +45,5 @@ export default{
 	  font-size:.35rem
 	  text-align:center
 	  color:#fff
-  
+
 </style>

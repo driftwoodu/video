@@ -8,7 +8,7 @@
 				随拍
 			</div>
 			<div class="middle">
-				<router-link :to="{path:'follow',query:{page:'关注'}}">
+				<router-link :to="{path:'index/follow',query:{page:'关注'}}">
 					<span class="header-span">
 						关注
 					</span>
@@ -16,13 +16,13 @@
 				<router-link :to="{path:'/friend',query:{page:'好友'}}">
 					<span class="header-span">
 						好友
-					</span>	
+					</span>
 				</router-link>
 			</div>
-			
+
 		</div>
 		<div class="ground">
-				
+
 		</div>
 	</div>
 </template>

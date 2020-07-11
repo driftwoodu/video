@@ -19,9 +19,8 @@
    const self = this;
    axios.get('http://localhost:9090/mock/login.json').then(response=>{
      var res =response.data.data;
-      console.log(response);
+     console.log(response);
      var len = res.length;
-
      var userNameArr= [];
      var passWordArr= [];
      var ses= window.sessionStorage;

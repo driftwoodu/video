@@ -5,7 +5,7 @@
 				首页
 			</div>
 		</router-link>
-		<router-link to="/follow">
+		<router-link to="/index/follow">
 			<div class="nav-box">
 				关注
 			</div>
@@ -13,14 +13,14 @@
 		<div class="nav-box">
 			<div class="iconfont icon-box">
 				&#x6666;
-			</div>	
+			</div>
 		</div>
-		<router-link to="/news">
+		<router-link to="/index/news">
 			<div class="nav-box">
 				消息
 			</div>
 		</router-link>
-		<router-link to="/personal">
+		<router-link to="/index/personal">
 			<div class="nav-box">
 				我
 			</div>
@@ -58,5 +58,5 @@ export default{
 		  margin:.15rem 15%
 		  line-height:.8rem
 		  border-radius:.1rem
-	
+
 </style>
