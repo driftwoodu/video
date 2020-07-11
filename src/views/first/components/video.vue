@@ -1,11 +1,11 @@
 <template>
 <div id="videos">
-	<video-player 
+	<video-player
 		class='video-player-box'
 		ref="videoPlayer"
-		:options="playerOptions"	
-	>	
-	</video-player>	
+		:options="playerOptions"
+	>
+	</video-player>
 </div>
 </template>
 
@@ -24,7 +24,7 @@ export default{
 				loop:true,
 				sources:[{
 					type:"video/mp4",
-					src:'http://192.168.10.79:8181/'+this.videos.src
+					src:'http://127.0.0.1:8181/'+this.videos.src
 				}],
 			}
 		}
@@ -35,8 +35,9 @@ export default{
 		}
 	},
 	methods:{
-	
+
 		judge(){
+
 			if(this.state===false){
 				this.$refs.videoPlayer.player.play()
 				this.state=true

@@ -1,7 +1,7 @@
 <template>
 	<div id="videoList">
 		<swiper :options="swiperOption" >
-			<swiper-slide class="swiper" v-for="(item,index) of list">
+			<swiper-slide class="swiper" v-for="(item,index) of list" :key="index">
 				<videos ref="videos" :videos="item" :index="index"></videos>
 				<div v-if="pages-1===index" class="left">
 					<first-left :item="item"></first-left>
@@ -64,14 +64,14 @@ export default{
 				    	if(this.pages>1){
 				    		this.pages-=1
 				    	}
-				    	this.previous(this.pages-1)  
+				    	this.previous(this.pages-1)
 				    },
 				    doubleTap:(event)=>{
 				      this.showColor()
 				    },
 				},
 			},
-			list:[]	
+			list:[]
 		}
 	},
 	mounted(){
@@ -83,7 +83,7 @@ export default{
 			this.componentName="first-share"
 		},
 		close(){
-			this.show=false	
+			this.show=false
 		},
 		openComment(){
 			this.show=true
@@ -93,16 +93,16 @@ export default{
 			this.loveColor=this.loveColor===false?true:false
 		},
 		getVideos(){
-			axios.get('/api/getVideoByAuthor',{
-				params:{
-					author:'张三'
-				}
-			})
+			axios.get('http://localhost:8080/getvideo',{
+        params:{
+
+        }
+      })
 			.then(this.getVideosSucc)
 		},
 		getVideosSucc(res){
-			
 			this.list=res.data
+      console.log(res)
 		},
 		player(val){
 			this.$refs.videos[val].judge()
@@ -116,7 +116,7 @@ export default{
 			this.$refs.videos[val].play()
 		}
 	}
-	
+
 }
 </script>
 

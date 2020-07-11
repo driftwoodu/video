@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import login from './views/login/login.vue'
 import first from './views/first/first.vue'
 import follow from './views/follow/follow.vue'
 import videoList from './views/first/components/videoList.vue'
@@ -13,6 +14,7 @@ import worksList from './views/personal/components/worksList.vue'
 import player from './views/player/player.vue'
 import user from './views/user/user.vue'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -20,9 +22,20 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
+     path: '/',
+     name: 'login',
+     component: login,
+     meta:{
+       needLogin: false
+     }
+    },
+    {
+      path: '/index',
       name: 'home',
       component: Home,
+       meta:{
+      needLogin: true
+    },
       children:[{
       	path: '/',
 	      name: 'first',
