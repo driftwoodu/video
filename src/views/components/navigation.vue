@@ -10,11 +10,13 @@
 				关注
 			</div>
 		</router-link>
+    <router-link to="/index/upload">
 		<div class="nav-box">
 			<div class="iconfont icon-box">
 				&#x6666;
 			</div>
 		</div>
+    </router-link>
 		<router-link to="/index/news">
 			<div class="nav-box">
 				消息

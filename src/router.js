@@ -13,6 +13,8 @@ import personal from './views/personal/personal.vue'
 import worksList from './views/personal/components/worksList.vue'
 import player from './views/player/player.vue'
 import user from './views/user/user.vue'
+import upload from './views/upload/upload.vue'
+
 
 
 Vue.use(Router)
@@ -69,6 +71,11 @@ export default new Router({
       	path: 'news',
 	      name: 'news',
 	      component: news,
+      },
+      {
+        path: 'upload',
+        name: 'upload',
+        component: upload,
       },
       {
       	path: 'personal',
