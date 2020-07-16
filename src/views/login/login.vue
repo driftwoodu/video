@@ -2,7 +2,8 @@
 <div>
   <p>用户名：<input type='text' v-model="userName"></p>
   <p>密码：<input type='text' v-model="passWord"></p>
-  <button @click="login()">登录</button>
+  <button @click="login()">登录</button>&nbsp;
+  <router-link to ="/registration"><button>注册</button></router-link>
 </div>
 </template>
 <script>
