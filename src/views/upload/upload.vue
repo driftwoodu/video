@@ -99,6 +99,8 @@ export default class App extends Vue {
         formData.append("name", fileChunks.file.name);
         formData.append("chunksLength", fileChunks.chunks.length + "");
         formData.append("uid", fileUid);
+        formData.append("title","123");
+        formData.append("author","1")
         Axios.post<ChunkUploadResult>('http://localhost:9090/api/fileupload', formData)
           .catch((reason) => console.error(`error: ${JSON.stringify(reason)}`))
           .then((res) => {

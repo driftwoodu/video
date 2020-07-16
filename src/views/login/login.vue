@@ -8,17 +8,11 @@
 <script>
   import axios from 'axios'
  export default {
-  data() {
-    return {
-     userName:'root',
-     passWord:'root'
-    }
-  },
   methods:{
     login(){
    const self = this;
-   axios.get('http://localhost:8080/mock/login.json').then(response=>{
-     var res =response.data.data;
+   axios.get('http://localhost:9090/login').then(response=>{
+     var res =response.data;
      console.log(response);
      var len = res.length;
      var userNameArr= [];
