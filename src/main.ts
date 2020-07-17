@@ -33,10 +33,14 @@ router.beforeEach((to, from, next)=>{
     next();
    }
   }else{
+    if(to.path === '/re'){
+      next()
+    }
    // 如果没有session ,访问任何页面。都会进入到 登录页
-   if (to.path === '/') { // 如果是登录页面的话，直接next() -->解决注销后的循环执行bug
+   else if (to.path === '/') { // 如果是登录页面的话，直接next() -->解决注销后的循环执行bug
     next();
-   } else { // 否则 跳转到登录页面
+   }
+    else { // 否则 跳转到登录页面
     next({ path: '/' });
    }
   }
