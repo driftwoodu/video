@@ -7,7 +7,6 @@
 			<div class="user-img-box">
 				<img class="user-img" src="../../../../public/img/author.jpg"/>
 			</div>
-			
 			<div v-if="user" :class="changeStyle" @click="changeClick">
 				<span v-show="show" class="iconfont">&#x6666;</span>{{changeContent}}
 			</div>
@@ -36,7 +35,7 @@
 			<div class="number-box">
 				<div class="box">
 					<span class="number">
-						123 
+						123
 						<span class="text">
 							获赞
 						</span>
@@ -44,7 +43,7 @@
 				</div>
 				<div class="box">
 					<span class="number">
-						345 
+						345
 						<span class="text">
 							关注
 						</span>
@@ -52,7 +51,7 @@
 				</div>
 				<div class="box">
 					<span class="number">
-						2456 
+						2456
 						<span class="text">粉丝</span>
 					</span>
 				</div>
@@ -74,7 +73,7 @@
 					喜欢
 				</div>
 			</router-link>
-			
+
 		</div>
 		<div class="router-box" v-else>
 			<router-link :to="{path:'/personal',query:{listName:'works'}}">
@@ -218,5 +217,5 @@ export default{
 		  line-height:.8rem
 		  color:#999
 		  float:left
-		  text-align:center		  
+		  text-align:center
 </style>

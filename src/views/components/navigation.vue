@@ -60,5 +60,4 @@ export default{
 		  margin:.15rem 15%
 		  line-height:.8rem
 		  border-radius:.1rem
-
 </style>

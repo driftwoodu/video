@@ -15,70 +15,62 @@
                                       value="">
       </p>
       <p style="position: relative;"><span class="p_logo"></span>
-        <input class="ipt" id="password" type="password" v-model="passWord" placeholder="请输入密码" value="">
+        <input class="ipt" id="password" type="password" v-model="password" placeholder="请输入密码" value="">
+      </p>
+      <p style="position: relative;margin-top: 10px;"><span class="p_logo"></span>
+        <input class="ipt" id="password2" type="password" v-model="password2" placeholder="请输入密码" value="">
       </p>
 
+
+      <div id="errorText" style="height: 20px;margin-top:10px">
+        <p style="color: red;display: none">用户名密码错误请从新输入</p>
+      </div>
       <div
         style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
         <!--        <p style="margin: 0px 35px 20px 45px;"><span style="float: left;"><a style="color: rgb(204, 204, 204);"-->
         <!--                                                                             href="#">忘记密码?</a></span>-->
-        <router-link to='/registration'>
-          <span style="float: left;margin-left: 10px;font-size: 14px;">没有账号，前往注册</span>
+        <router-link to='/'>
+          <span style="float: left;margin-left: 10px;font-size: 14px;">已有账号，现在登录</span>
         </router-link>
 
         <span style="float: right;">
-              <a id="loginBtn" @click="login()">登录</a>
+              <a id="loginBtn" @click="registration()">注册</a>
            </span></div>
     </div>
   </div>
 </template>
+
 <script>
   import axios from 'axios'
- export default {
-  methods:{
-    login(){
-   const self = this;
-   axios.get('http://localhost:9090/login').then(response=>{
-     var res =response.data;
-     console.log(response);
-     var len = res.length;
-     var userNameArr= [];
-     var passWordArr= [];
-     var idArr=[];
-     var ses= window.sessionStorage;
-    // 拿到所有的username
-    for(var i=0; i<len; i++){
-     userNameArr.push(res[i].username);
-     passWordArr.push(res[i].password);
-     idArr.push(res[i].id);
-    }
-    if(userNameArr.indexOf(this.userName) === -1){
-      alert('账号不存在！');
-    }else{
-     var index = userNameArr.indexOf(this.userName);
+  export default{
+    name:'registration',
+    data(){
+      return{
+        userName:"",
+        password:""
+        }
+    },
+    created() {
 
-     if(passWordArr[index] === this.passWord){
-      // 把token放在sessionStorage中
-      ses.setItem('data', res[index].token);
-      ses.setItem('user', res[index].username);
-      ses.setItem('id', res[index].id);
-      this.$parent.$data.userTitle = res[index].usertitle;
-      //验证成功进入首页
+    },
+    methods:{
+     registration:function(){
+          let fd = new FormData();
+          fd.append("userName", this.userName);
+          fd.append("password",this.password);
 
-      //this.startHacking ('登录成功！');
-      //跳转到首页
-      this.$router.push('/index');
-      // console.log(this.$router);
-     }else{
-      alert('密码错误！')
+          let config = {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+          axios.post('http://localhost:9090/registration',fd,config).then((res)=>{
+              console.log(res)
+          })
+          this.$router.push('/');
      }
-    }
-   }).catch(err=>{
-    console.log('连接数据库失败！')
-   })
+ }
   }
-  }
-}
 </script>
 <style scoped>
   body {

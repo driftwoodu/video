@@ -4,6 +4,7 @@
       <input type="file" @change="handleFileChange" />
       <button @click="handleUpload">上传</button>
     </h1>
+    <p><input type='text' id="title" v-model="title" placeholder="请输入视频标题"></p>
     <span>{{
       allChunksUploaded ? "完成" : "上传进度：" + uploadProcess + "%"
     }}</span>
@@ -21,7 +22,7 @@ import {
   ChunkUploadResult,
   isChunkUploadResult,
 } from "../../dto/ChunkUploadResult";
-
+document.body.style.backgroundColor="#ffffff";
 type FileChunks = {
   file: File;
   chunks: { start: number; end: number }[];
@@ -30,7 +31,7 @@ type FileChunks = {
 @Component
 export default class App extends Vue {
   container: { file: null | File } = { file: null };
-  chunkSize = 10 * 1024 * 1024; // 文件块大小10M
+  chunkSize = 100 * 1024 * 1024; // 文件块大小10M
   allChunksUploaded = false;
   uploadProcess = 0;
   handleFileChange(e: Event) {
@@ -40,7 +41,6 @@ export default class App extends Vue {
     // 将上传完成状态置否
     this.allChunksUploaded = false;
   }
-
   makeChunks(file: File): FileChunks {
     const fileChunks: FileChunks = {
       file,
@@ -90,6 +90,7 @@ export default class App extends Vue {
       ).valueOf();
     };
     // 生成uid，传递给后端，后端根据uid对子文件块进行合并
+    console.log(title.value)
     const fileUid = randomId();
     fileChunks.chunks.forEach(
       (chunk: { start: number; end: number }, index: number) => {
@@ -99,6 +100,9 @@ export default class App extends Vue {
         formData.append("name", fileChunks.file.name);
         formData.append("chunksLength", fileChunks.chunks.length + "");
         formData.append("uid", fileUid);
+        formData.append("title",title.value);
+        formData.append("author",sessionStorage.getItem('user'))
+        formData.append("id",sessionStorage.getItem('id'))
         Axios.post<ChunkUploadResult>('http://localhost:9090/api/fileupload', formData)
           .catch((reason) => console.error(`error: ${JSON.stringify(reason)}`))
           .then((res) => {
@@ -127,7 +131,7 @@ export default class App extends Vue {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
 }
 
 #nav {
@@ -136,10 +140,10 @@ export default class App extends Vue {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #fff;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #fff;
 }
 </style>

@@ -14,7 +14,7 @@ import worksList from './views/personal/components/worksList.vue'
 import player from './views/player/player.vue'
 import user from './views/user/user.vue'
 import upload from './views/upload/upload.vue'
-import re from './views/re/re.vue'
+import registration from './views/registration/registration.vue'
 
 
 
@@ -31,15 +31,15 @@ export default new Router({
      meta:{
        needLogin: false
      }
-     },
-     {
-         path: '/re',
-         name: 're',
-         component: re,
-          meta:{
-          needLogin: false
-         }
-     },
+    },
+    {
+      path: '/registration',
+      name: 'registration',
+      component: registration,
+      meta:{
+        needLogin: false
+      }
+    },
     {
       path: '/index',
       name: 'home',
