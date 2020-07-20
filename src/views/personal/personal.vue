@@ -11,27 +11,30 @@ import information from './components/information.vue'
 import axios from 'axios'
   export default{
     name:'personal',
+    components:{
+      information
+    },
     props:['user'],
     data(){
       return{
         personalDTO:{
           id:"",
-          name:{},
-          city:{},
-          message:{},
-          gender:{},
-          followed:{},
-          follower:{},
-          likeds:{},
-          videos:{},
+          name:"",
+          city:"",
+          message:"",
+          gender:"",
+          followed:"",
+          follower:"",
+          likeds:"",
+          videos:"",
         }
       }
     },
     created() {
-      this.information()
+      this.informat()
     },
     methods:{
-      information:function(){
+      informat:function(){
               var self = this;
               let fd = new FormData();
               fd.append("id", sessionStorage.getItem('id'));

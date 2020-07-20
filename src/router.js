@@ -15,7 +15,7 @@ import player from './views/player/player.vue'
 import user from './views/user/user.vue'
 import upload from './views/upload/upload.vue'
 import registration from './views/registration/registration.vue'
-
+import changeinformation from './views/changeinformation/changeinformation.vue'
 
 
 Vue.use(Router)
@@ -112,6 +112,11 @@ export default new Router({
     	path: '/changeCity',
       name: 'changeCity',
       component: changeCity,
+    },
+    {
+    	path: '/changeinformation',
+      name: 'changeinformation',
+      component: changeinformation,
     },
     {
     	path: '/player',

@@ -11,15 +11,15 @@
 		<div :class="showColor" @click="click">
 			&#x5555;
 		</div>
-		<div class="number">{{item.loveNumber}}</div>
+		<div class="number">{{item.likeCount}}</div>
 		<div class="iconfont right-icon" @click="openComment">
 			&#x1111;
 		</div>
-		<div class="number">{{item.commentNumber}}</div>
+		<div class="number">{{item.commentCount}}</div>
 		<div class="iconfont right-icon" @click="openShare">
 			&#x7777;
 		</div>
-		<div class="number">{{item.shareNumber}}</div>
+		<div class="number">{{item.shareCount}}</div>
 		<div class="around" >
 			<img class="img" src="../../../../public/img/music.jpg"/>
 		</div>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
 export default{
 	name:'firstRight',
 	props:['item','loveColor'],
@@ -43,8 +44,35 @@ export default{
 			}
 		},
 		click(){
-			this.showColor=this.showColor==="iconfont right-icon"?"iconfont icon-red":"iconfont right-icon"
-		}
+        if(this.showColor=this.showColor==="iconfont right-icon"){
+				this.showColor="iconfont icon-red"
+				let fd = new FormData();
+				fd.append("videoid", item.id);
+				fd.append("liked",1);
+
+				let config = {
+				  headers: {
+				    'Content-Type': 'multipart/form-data'
+				  }
+				}
+				axios.post('http://localhost:9090/like',fd,config).then((res)=>{
+
+				})
+				}else{
+				this.showColor="iconfont right-icon"
+        let fd = new FormData();
+        fd.append("videoid", item.id);
+        fd.append("liked",-1);
+
+        let config = {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+        axios.post('http://localhost:9090/like',fd,config).then((res)=>{
+
+        })
+				}		}
 	},
 	data(){
 		return{
@@ -59,7 +87,7 @@ export default{
 			}
 		}
 	}
-	
+
 }
 </script>
 
@@ -115,9 +143,9 @@ export default{
 	.number
 	  font-size:.25rem
 	  text-align:center
-	
-		  
-	  
+
+
+
 @keyframes changDeg{
 	0%{
 		transform:rotate(0deg);
@@ -127,6 +155,6 @@ export default{
 	}
 }
 
-	  
-  
+
+
 </style>

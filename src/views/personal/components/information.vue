@@ -10,32 +10,32 @@
 			<div v-if="user" :class="changeStyle" @click="changeClick">
 				<span v-show="show" class="iconfont">&#x6666;</span>{{changeContent}}
 			</div>
-			<div v-else class="change">编辑信息</div>
+			<div v-else class="change" @click="changeinformation">编辑信息</div>
 		</div>
 		<div class="name-box">
 			<div class="name" >
-
+          {{personalDTO.name}}
 			</div>
 			<div class="douyinId">
-				抖音号：123456789
-			</div>
+          抖音号：{{personalDTO.id}}
+       </div>
 		</div>
 		<div class="text-box">
 			<div class="introduce">
-				张三热爱学习
+				个性签名：{{personalDTO.message}}
 			</div>
 			<div class="label-box">
 				<div class="label">
-					北京
+					{{personalDTO.city}}
 				</div>
 				<div class="label">
-					男
+					{{personalDTO.gender}}
 				</div>
 			</div>
 			<div class="number-box">
 				<div class="box">
 					<span class="number">
-						123
+						{{personalDTO.likeds}}
 						<span class="text">
 							获赞
 						</span>
@@ -43,7 +43,7 @@
 				</div>
 				<div class="box">
 					<span class="number">
-						345
+						{{personalDTO.followed}}
 						<span class="text">
 							关注
 						</span>
@@ -51,7 +51,7 @@
 				</div>
 				<div class="box">
 					<span class="number">
-						2456
+						{{personalDTO.follower}}
 						<span class="text">粉丝</span>
 					</span>
 				</div>
@@ -106,7 +106,10 @@ export default{
 			this.changeStyle=this.changeStyle==="change-user"?"change":"change-user"
 			this.changeContent=this.changeContent==="关注"?"取消关注":"关注"
 			this.show=this.show===true?false:true
-		}
+		},
+    changeinformation(){
+      this.$router.push('/changeinformation');
+    }
 	},
 	data(){
 		return{

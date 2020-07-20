@@ -2,7 +2,7 @@
   <div>
     <div class="top_div"></div>
     <div
-      style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 224px; text-align: center;">
+      style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 238px; text-align: center;">
       <div style="width: 165px; height: 96px; position: absolute;">
         <div class="tou"></div>
         <div class="initial_left_hand" id="left_hand"></div>
@@ -22,13 +22,9 @@
       </p>
 
 
-      <div id="errorText" style="height: 20px;margin-top:10px">
-        <p style="color: red;display: none">用户名密码错误请从新输入</p>
-      </div>
+      
       <div
-        style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
-        <!--        <p style="margin: 0px 35px 20px 45px;"><span style="float: left;"><a style="color: rgb(204, 204, 204);"-->
-        <!--                                                                             href="#">忘记密码?</a></span>-->
+        style="background: rgb(255, 255, 255); height: 50px; line-height: 50px; margin-top: 30px;">
         <router-link to='/'>
           <span style="float: left;margin-left: 10px;font-size: 14px;">已有账号，现在登录</span>
         </router-link>

@@ -4,7 +4,7 @@
 			@{{item.author}}
 		</div>
 		<div class="title">
-			#{{item.title}}#
+			#{{item.title}}
 		</div>
 		<div class="box">
 			<div class="music">
@@ -19,7 +19,10 @@
 <script>
 export default{
 	name:'firstLeft',
-	props:['item']
+	props:['item'],
+  mounted(){
+    console.log(item)
+  }
 }
 </script>
 
