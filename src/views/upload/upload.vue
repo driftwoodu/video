@@ -2,12 +2,12 @@
   <div id="upload">
     <h1>
       <input type="file" @change="handleFileChange" />
-      <button @click="handleUpload">上传</button>
     </h1>
     <p><input type='text' id="title" v-model="title" placeholder="请输入视频标题"></p>
     <span>{{
       allChunksUploaded ? "完成" : "上传进度：" + uploadProcess + "%"
     }}</span>
+    <h1><button @click="handleUpload">上传</button></h1>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ type FileChunks = {
 @Component
 export default class App extends Vue {
   container: { file: null | File } = { file: null };
-  chunkSize = 100 * 1024 * 1024; // 文件块大小10M
+  chunkSize = 10 * 1024 * 1024; // 文件块大小10M
   allChunksUploaded = false;
   uploadProcess = 0;
   handleFileChange(e: Event) {

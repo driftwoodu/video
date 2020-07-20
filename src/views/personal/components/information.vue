@@ -14,7 +14,7 @@
 		</div>
 		<div class="name-box">
 			<div class="name" >
-				张三
+
 			</div>
 			<div class="douyinId">
 				抖音号：123456789
@@ -97,7 +97,10 @@
 <script >
 export default{
 	name:'information',
-	props:['user'],
+	props:['personalDTO'],
+  mounted(){
+    console.log(personalDTO)
+  },
 	methods:{
 		changeClick(){
 			this.changeStyle=this.changeStyle==="change-user"?"change":"change-user"
