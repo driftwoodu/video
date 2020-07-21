@@ -5,7 +5,7 @@
 		    	&#xbbbb;
 		    </div>
 	    </router-link>
-	    <router-view :user="user"/>
+	    <router-view :user="user" :userid="userid"/>
 	</div>
 </template>
 
@@ -18,11 +18,12 @@ export default{
 	},
 	data(){
 		return{
-			user:this.$route.query.user
+			user:this.$route.query.user,
+      userid:this.$route.query.userid
 		}
 	}
 }
-	
+
 </script>
 
 <style lang="stylus" scoped>

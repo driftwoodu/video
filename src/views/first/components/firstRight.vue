@@ -1,7 +1,7 @@
 <template>
 	<div id="firstRight">
 		<div class="author-img">
-			<router-link :to="{path:'/user',query:{user:'true'}}">
+			<router-link :to="{path:'/user',query:{user:'0', userid:item.userid}}">
 				<img class="img" src="../../../../public/img/author.jpg"/>
 			</router-link>
 			<div class="iconfont add" v-if="show" @click="clickShow">
@@ -11,15 +11,15 @@
 		<div :class="showColor" @click="click">
 			&#x5555;
 		</div>
-		<div class="number">{{item.likeCount}}</div>
+		<div class="number">{{item.likecount}}</div>
 		<div class="iconfont right-icon" @click="openComment">
 			&#x1111;
 		</div>
-		<div class="number">{{item.commentCount}}</div>
+		<div class="number">{{item.commentcount}}</div>
 		<div class="iconfont right-icon" @click="openShare">
 			&#x7777;
 		</div>
-		<div class="number">{{item.shareCount}}</div>
+		<div class="number">{{item.sharecount}}</div>
 		<div class="around" >
 			<img class="img" src="../../../../public/img/music.jpg"/>
 		</div>

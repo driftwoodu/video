@@ -1,6 +1,6 @@
 <template>
 	<div id="personal" >
-		<information :personalDTO="personalDTO" ></information>
+		<information :personalDTO="personalDTO"></information>
 		<keep-alive>
 			<router-view :key="$route.fullPath"/>
 		</keep-alive>
@@ -14,7 +14,7 @@ import axios from 'axios'
     components:{
       information
     },
-    props:['user'],
+    props:['user','userid'],
     data(){
       return{
         personalDTO:{
@@ -35,12 +35,27 @@ import axios from 'axios'
     },
     methods:{
       informat:function(){
-              var self = this;
-              let fd = new FormData();
-              fd.append("id", sessionStorage.getItem('id'));
-              axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
-              this.personalDTO = res.data;
-        })
+        console.log(this.user)
+              if(this.user==0){
+                console.log(this.user)
+                console.log(this.userid)
+                console.log("22222")
+                var self = this;
+                let fd = new FormData();
+                fd.append("id", this.userid);
+                axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+                this.personalDTO = res.data;
+                })
+              }else{
+                console.log(this.user)
+                console.log("11111")
+                var self = this;
+                let fd = new FormData();
+                fd.append("id",sessionStorage.getItem('id'));
+                axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+                this.personalDTO = res.data;
+                })
+              }
       }
     }
   }

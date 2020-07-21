@@ -22,7 +22,7 @@
 				消息
 			</div>
 		</router-link>
-		<router-link to="/index/personal">
+		<router-link :to="{path:'/user',query:{user:'1' ,userid:'0'}}">
 			<div class="nav-box">
 				我
 			</div>

@@ -7,7 +7,7 @@
 			<div class="user-img-box">
 				<img class="user-img" src="../../../../public/img/author.jpg"/>
 			</div>
-			<div v-if="user" :class="changeStyle" @click="changeClick">
+			<div v-if="user==0" :class="changeStyle" @click="changeClick">
 				<span v-show="show" class="iconfont">&#x6666;</span>{{changeContent}}
 			</div>
 			<div v-else class="change" @click="changeinformation">编辑信息</div>
@@ -95,19 +95,31 @@
 	</div>
 </template>
 <script >
+  import axios from 'axios'
 export default{
 	name:'information',
 	props:['personalDTO'],
+
   mounted(){
-    console.log(personalDTO)
+
   },
 	methods:{
 		changeClick(){
 			this.changeStyle=this.changeStyle==="change-user"?"change":"change-user"
 			this.changeContent=this.changeContent==="关注"?"取消关注":"关注"
 			this.show=this.show===true?false:true
+      let fd = new FormData();
+      fd.append("followed", this.userid);
+      fd.append("follower", sessionStorage.getItem('id'));
+      fd.append("isfollow",this.show);
+      console.log(this.userid);
+      axios.post('http://localhost:9090/follow',fd).then((res)=>{
+      })
 		},
     changeinformation(){
+      console.log(this.personalDTO);
+      console.log(this.user);
+      console.log(this.userid);
       this.$router.push('/changeinformation');
     }
 	},
@@ -115,9 +127,11 @@ export default{
 		return{
 			changeStyle:"change-user",
 			changeContent:"关注",
-			show:true
+			show:true,
+      user:this.$route.query.user,
+      userid:this.$route.query.userid
 		}
-	}
+	},
 }
 </script>
 <style lang="stylus" scoped>
