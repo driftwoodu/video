@@ -93,7 +93,7 @@ export default{
 			this.loveColor=this.loveColor===false?true:false
 		},
 		getVideos(){
-			axios.get('http://localhost:9090/getvideo',{
+			axios.get('http://localhost:9090/getVideo',{
         params:{
 
         }

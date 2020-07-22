@@ -11,7 +11,7 @@
 		<div :class="showColor" @click="click">
 			&#x5555;
 		</div>
-		<div class="number">{{item.likecount}}</div>
+		<div class="number">{{video.likecount}}</div>
 		<div class="iconfont right-icon" @click="openComment">
 			&#x1111;
 		</div>
@@ -31,7 +31,29 @@
 export default{
 	name:'firstRight',
 	props:['item','loveColor'],
+  data(){
+  	return{
+  		show:true,
+  		showColor:"iconfont right-icon",
+      video:{
+        id:"",
+        likecount:""
+      }
+  	}
+  },
+  created(){
+    this.initiate();
+  },
 	methods:{
+    initiate(){
+      let fd = new FormData;
+      fd.append("id",this.item.id)
+      axios.post('http://localhost:9090/getVideoById',fd).then((res)=>{
+      this.video.id = res.data.id;
+      this.video.likecount = res.data.likecount;
+      console.log(this.video);
+      })
+    },
 		openShare(){
 			this.$emit('openShare')
 		},
@@ -47,38 +69,23 @@ export default{
         if(this.showColor=this.showColor==="iconfont right-icon"){
 				this.showColor="iconfont icon-red"
 				let fd = new FormData();
-				fd.append("videoid", item.id);
-				fd.append("liked",1);
-
-				let config = {
-				  headers: {
-				    'Content-Type': 'multipart/form-data'
-				  }
-				}
-				axios.post('http://localhost:9090/like',fd,config).then((res)=>{
-
+				fd.append("videoId", this.item.id);
+        fd.append("userId",sessionStorage.getItem("id"));
+				axios.post('http://localhost:9090/increaseLike',fd).then((res)=>{
+          this.video.id = res.data.id;
+          this.video.likecount = this.video.likecount + 1;
 				})
 				}else{
 				this.showColor="iconfont right-icon"
         let fd = new FormData();
-        fd.append("videoid", item.id);
-        fd.append("liked",-1);
-
-        let config = {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-        axios.post('http://localhost:9090/like',fd,config).then((res)=>{
-
+        fd.append("videoId", this.item.id);
+        fd.append("userId",sessionStorage.getItem("id"));
+        axios.post('http://localhost:9090/decreaseLike',fd).then((res)=>{
+          this.video.id = res.data.id;
+          this.video.likecount = this.video.likecount - 1;
         })
-				}		}
-	},
-	data(){
-		return{
-			show:true,
-			showColor:"iconfont right-icon"
-		}
+      }
+    }
 	},
 	watch:{
 		loveColor(){

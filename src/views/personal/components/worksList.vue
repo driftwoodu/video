@@ -2,30 +2,36 @@
 	<div class="">
 		<div id="worksList">
 			<router-link to="/player">
-				<div class="item" v-for="item of list">
+				<div class="item" v-for="item of personalDTO.videos">
 					<videos :videos="item" @click.native="click"></videos>
 					<div class="box">
-						<span class="iconfont love">
+            <div><span class="title">
+            	{{item.title}}
+            </span></div>
+            <div>
+              <span class="iconfont love">
 							&#x5555;
 						</span>
-						<span class="number">
-							666
-						</span>
+            <span class="likecount">
+            	{{item.likecount}}
+            </span>
+            </div>
 					</div>
 				</div>
 			</router-link>
 		</div>
 		<div class="ground">
-			
+
 		</div>
 	</div>
-	
+
 </template>
 <script>
 import axios from 'axios'
 import videos from '../../first/components/video.vue'
 export default{
-	name:'worksLiat',
+	name:'worksList',
+  props:['personalDTO'],
 	components:{
 		videos
 	},
@@ -36,7 +42,7 @@ export default{
 		}
 	},
 	created(){
-		this.getvideo()
+		//this.getvideo()
 	},
 	methods:{
 		click(){
@@ -52,10 +58,10 @@ export default{
 			}else{
 				this.list=res.data.list.slice(4,8)
 			}
-			
+
 		}
 	}
-	
+
 }
 </script>
 <style lang="stylus" scoped>
@@ -83,21 +89,21 @@ export default{
     		.number
     		  font-size:.3rem
     		  color:#fff
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>

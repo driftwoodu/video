@@ -1,6 +1,7 @@
 <template>
 	<div id="personal" >
 		<information :personalDTO="personalDTO"></information>
+    <worklist :personalDTO = "personalDTO"></worklist>
 		<keep-alive>
 			<router-view :key="$route.fullPath"/>
 		</keep-alive>
@@ -8,11 +9,13 @@
 </template>
 <script >
 import information from './components/information.vue'
+import worklist from './components/worksList.vue'
 import axios from 'axios'
   export default{
     name:'personal',
     components:{
-      information
+      information,
+      worklist
     },
     props:['user','userid'],
     data(){
@@ -31,10 +34,10 @@ import axios from 'axios'
       }
     },
     created() {
-      this.informat()
+      this.information()
     },
     methods:{
-      informat:function(){
+      information:function(){
         console.log(this.user)
               if(this.user==0){
                 console.log(this.user)
@@ -56,7 +59,7 @@ import axios from 'axios'
                 this.personalDTO = res.data;
                 })
               }
-      }
+      },
     }
   }
 </script>
