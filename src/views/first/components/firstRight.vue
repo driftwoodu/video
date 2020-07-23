@@ -70,7 +70,7 @@ export default{
 				this.showColor="iconfont icon-red"
 				let fd = new FormData();
 				fd.append("videoId", this.item.id);
-        fd.append("userId",sessionStorage.getItem("id"));
+				fd.append("userId",sessionStorage.getItem("id"));
 				axios.post('http://localhost:9090/increaseLike',fd).then((res)=>{
           this.video.id = res.data.id;
           this.video.likecount = this.video.likecount + 1;

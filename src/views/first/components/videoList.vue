@@ -9,11 +9,12 @@
 				<div v-if="pages-1===index" class="right">
 					<first-right @openShare="openShare" @openComment="openComment" :loveColor="loveColor" :item="item"></first-right>
 				</div>
+        <div v-if="show" class="comment-box">
+			<component @close="close" :is="componentName" :item="item"></component>
+		</div>
 			</swiper-slide>
 		</swiper>
-		<div v-if="show" class="comment-box">
-			<component @close="close" :is="componentName"></component>
-		</div>
+		
 	</div>
 </template>
 
