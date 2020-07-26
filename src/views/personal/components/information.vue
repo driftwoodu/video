@@ -7,7 +7,7 @@
 			<div class="user-img-box">
 				<img class="user-img" src="../../../../public/img/author.jpg"/>
 			</div>
-			<div v-if="user==0" :class="changeStyle" @click="changeClick">
+			<div v-if="user==0&&userid!=nowid" :class="changeStyle" @click="changeClick">
 				<span v-show="show" class="iconfont">&#x6666;</span>{{changeContent}}
 			</div>
 			<div v-else class="change" @click="changeinformation">编辑信息</div>
@@ -57,7 +57,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="router-box" v-if="user">
+		<div class="router-box" v-if="user==0">
 			<router-link :to="{path:'user',query:{listName:'works'}}">
 				<div class="love" >
 					作品
@@ -76,7 +76,7 @@
 
 		</div>
 		<div class="router-box" v-else>
-			<router-link :to="{path:'/personal',query:{listName:'works'}}">
+			<router-link :to="{path:'user',query:{listName:'works'}}">
 				<div class="love" >
 					作品
 				</div>
@@ -101,9 +101,25 @@ export default{
 	props:['personalDTO'],
 
   mounted(){
-
+      this.nowid=sessionStorage.getItem('id')
+      this.isFollowed()
   },
 	methods:{
+    isFollowed(){
+      if(this.user=='0'){
+        let fd = new FormData();
+        fd.append("followed", this.userid);
+        fd.append("follower", sessionStorage.getItem('id'));
+        axios.post('http://localhost:9090/isFollowed',fd).then((res)=>{
+          console.log(res.data)
+          if(res.data==false){
+            this.changeStyle="change"
+            this.changeContent="取消关注"
+            this.show=false
+          }
+        })
+      }
+    },
 		changeClick(){
 			this.changeStyle=this.changeStyle==="change-user"?"change":"change-user"
 			this.changeContent=this.changeContent==="关注"?"取消关注":"关注"
@@ -111,8 +127,7 @@ export default{
       let fd = new FormData();
       fd.append("followed", this.userid);
       fd.append("follower", sessionStorage.getItem('id'));
-      fd.append("isfollow",this.show);
-      console.log(this.userid);
+      fd.append("isFollow",this.show);
       axios.post('http://localhost:9090/follow',fd).then((res)=>{
       })
 		},
@@ -129,7 +144,8 @@ export default{
 			changeContent:"关注",
 			show:true,
       user:this.$route.query.user,
-      userid:this.$route.query.userid
+      userid:this.$route.query.userid,
+      nowid:""
 		}
 	},
 }

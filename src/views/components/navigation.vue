@@ -22,7 +22,7 @@
 				消息
 			</div>
 		</router-link>
-		<router-link :to="{path:'/user',query:{user:'1' ,userid:'0'}}">
+		<router-link :to="{path:'/user',query:{user:'1' ,userid:this.userid}}">
 			<div class="nav-box">
 				我
 			</div>
@@ -32,7 +32,15 @@
 
 <script>
 export default{
-	name:'navigation'
+	name:'navigation',
+  data(){
+    return{
+      userid:""
+    }
+  },
+  mounted(){
+    this.userid=sessionStorage.getItem('id')
+  }
 }
 </script>
 

@@ -44,7 +44,21 @@ export default{
   created(){
     this.initiate();
   },
+  mounted(){
+    this.isFollowed()
+  },
 	methods:{
+    isFollowed(){
+      let fd = new FormData();
+      fd.append("followed", this.item.userid);
+      fd.append("follower", sessionStorage.getItem('id'));
+      axios.post('http://localhost:9090/isFollowed',fd).then((res)=>{
+        console.log(res.data)
+        if(res.data==false){
+          this.show=false
+        }
+      })
+    },
     initiate(){
       let fd = new FormData;
       fd.append("id",this.item.id)
@@ -61,6 +75,13 @@ export default{
 			this.$emit('openComment')
 		},
 		clickShow(){
+      let fd = new FormData();
+      fd.append("followed", this.item.userid);
+      fd.append("follower", sessionStorage.getItem('id'));
+      fd.append("isFollow",false);
+      axios.post('http://localhost:9090/follow',fd).then((res)=>{
+        console.log("8498191561691")
+      })
 			if(this.show===true){
 				this.show=false
 			}
