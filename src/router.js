@@ -45,16 +45,24 @@ export default new Router({
       name: 'home',
       component: Home,
        meta:{
-      needLogin: true
+      needLogin: true,
     },
+
       children:[{
       	path: '/',
 	      name: 'first',
 	      component: first,
+         meta:{
+          needLogin: true,
+        },
 	      children:[{
 	      	path: '/',
 		      name: 'videoList',
 		      component: videoList,
+           meta:{
+            needLogin: true,
+            keepAlive: true,
+          },
 	      },{
 	      	path: 'city',
 		      name: 'city',

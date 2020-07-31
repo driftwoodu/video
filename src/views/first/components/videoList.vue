@@ -12,7 +12,7 @@
 			</swiper-slide>
 		</swiper>
 		<div v-if="show" class="comment-box">
-			<component @close="close" :is="componentName"></component>
+			<component @close="close" :is="componentName" :item="item"></component>
 		</div>
 	</div>
 </template>

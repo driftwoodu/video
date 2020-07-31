@@ -7,7 +7,7 @@
 					&#x9999;
 				</div>
 			</div>
-			
+
 		</div>
 		<div class="comment-list">
 			<div class="item">
@@ -96,17 +96,42 @@
 			</div>
 		</div>
 		<div class="comment-footer">
-			留下你精彩评论吧
+      <input  type="text" v-model="commenttext" placeholder="请输入你的精彩评论">
+      <button @click="comment()">发表</button>
 		</div>
+
 	</div>
 </template>
 <script>
+  import axios from 'axios'
 export default{
 	name:"comment",
+  props:['item'],
+  data(){
+    return{
+      userId:"",
+      videoId:"",
+      commenttext:""
+      }
+  },
 	methods:{
 		close(){
 			this.$emit('close')
-		}
+		},comment:function(){
+      let fd = new FormData();
+      fd.append("videoId", this.item.id);
+      fd.append("userId",sessionStorage.getItem("id"));
+      fd.append("commenttext",this.commenttext);
+      let config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+      axios.post('http://localhost:9090/comment',fd,config).then((res)=>{
+          console.log(res)
+      })
+      //this.$router.go(0);
+    }
 	}
 }
 </script>
@@ -187,7 +212,7 @@ export default{
 				  font-size:.3rem
 				  line-height:.5rem
 	.comment-footer
-	  height:1rem
+	  height:1.5rem
 	  width:100%
 	  line-height:1rem
 	  font-size:.45rem
