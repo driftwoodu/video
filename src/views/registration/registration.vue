@@ -22,7 +22,7 @@
       </p>
 
 
-      
+
       <div
         style="background: rgb(255, 255, 255); height: 50px; line-height: 50px; margin-top: 30px;">
         <router-link to='/'>
@@ -51,6 +51,14 @@
     },
     methods:{
      registration:function(){
+       if(this.password ==""){
+         alert("密码不能为空")
+       }else if(this.userName == ""){
+         alert("用户名不能为空")
+       }else if(this.password2 != this.password){
+         alert("两次输入密码不相同")
+       }
+       else{
           let fd = new FormData();
           fd.append("userName", this.userName);
           fd.append("password",this.password);
@@ -64,6 +72,7 @@
               console.log(res)
           })
           this.$router.push('/');
+          }
      }
  }
   }

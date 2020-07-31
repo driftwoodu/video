@@ -26,7 +26,6 @@
 
       <div
         style="background: rgb(255, 255, 255); height: 50px; line-height: 50px; margin-top: 20px;">
->
 
         <span style="float: none;">
               <a id="modifyBtn" @click="modify()">确认</a>
