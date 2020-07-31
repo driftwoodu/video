@@ -47,11 +47,16 @@ export default{
 	methods:{
     initiate(){
       let fd = new FormData;
-      fd.append("id",this.item.id)
+      fd.append("id",this.item.id);
+      fd.append("userId",sessionStorage.getItem("id"));
       axios.post('http://localhost:9090/getVideoById',fd).then((res)=>{
       this.video.id = res.data.id;
       this.video.likecount = res.data.likecount;
-      console.log(this.video);
+      if(res.data.ifUserLiked === true){
+        this.showColor="iconfont icon-red";
+      }else{
+        	this.showColor="iconfont right-icon";
+      }
       })
     },
 		openShare(){
