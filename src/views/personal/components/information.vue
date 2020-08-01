@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div class="router-box" v-if="user==0">
-			<router-link :to="{path:'user',query:{listName:'works'}}">
+			<router-link :to="{path:'/user',query:{listName:'works'}}">
 				<div class="love" >
 					作品
 				</div>
@@ -76,7 +76,7 @@
 
 		</div>
 		<div class="router-box" v-else>
-			<router-link :to="{path:'user',query:{listName:'works'}}">
+			<router-link :to="{path:'/worksList',query:{listName:'works'}}">
 				<div class="love" >
 					作品
 				</div>

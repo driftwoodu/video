@@ -1,9 +1,11 @@
 <template>
 	<div class="">
 		<div id="worksList">
-			<router-link to="/player">
+
 				<div class="item" v-for="item of personalDTO.videos">
+          <router-link :to="{path:'/player',query:{itemid:item.id}}">
 					<videos :videos="item" @click.native="click"></videos>
+          </router-link>
 					<div class="box">
             <div><span class="title">
             	{{item.title}}
@@ -18,7 +20,7 @@
             </div>
 					</div>
 				</div>
-			</router-link>
+
 		</div>
 		<div class="ground">
 

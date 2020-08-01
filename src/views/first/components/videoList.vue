@@ -28,6 +28,7 @@ import comment from '../../components/comment.vue'
 import firstShare from '../../components/share.vue'
 export default{
 	name:'videoList',
+  props:['videolist','flag'],
 	components:{
 		swiper,
 		swiperSlide,
@@ -101,8 +102,11 @@ export default{
 			.then(this.getVideosSucc)
 		},
 		getVideosSucc(res){
-			this.list=res.data
-      console.log(res)
+      if(this.flag=='0'){
+        this.list=this.videolist
+      }else{
+        this.list=res.data
+      }
 		},
 		player(val){
 			this.$refs.videos[val].judge()

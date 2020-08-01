@@ -108,7 +108,7 @@ export default new Router({
 	      component: personal,
 	      children:[
 	      {
-	      	path: '/',
+	      	path: '/worksList',
 	      	name: 'worksList',
 	      	component: worksList,
 	      },

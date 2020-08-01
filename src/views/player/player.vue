@@ -3,9 +3,7 @@
     <div class="iconfont icon" @click="click">
     	&#xbbbb;
     </div>
-    <div class="list">
-    	<videolist></videolist>
-    </div>
+    	<videoList :videolist="list" flag='0'></videoList>
     <div class="comment">
     	留下你的精彩评论吧
     </div>
@@ -13,13 +11,37 @@
 </template>
 
 <script>
-import videolist from '../first/components/videoList.vue'
+  import {videoPlayer} from 'vue-video-player'
+  import videoList from '../first/components/videoList.vue'
+  import axios from 'axios'
 export default {
   name: 'player',
   components:{
-  	videolist
+  	videoList
+  },
+  data(){
+    return{
+      itemid:this.$route.query.itemid,
+      list:[]
+      }
+    },
+  created(){
+    this.getVideos()
   },
   methods:{
+    getVideos(){
+      let fd = new FormData();
+      fd.append("videoid", this.itemid);
+    	axios.post('http://localhost:9090/getVideoByVideoId',fd,{
+        params:{
+
+        }
+      })
+    	.then(this.getVideosSucc)
+    },
+    getVideosSucc(res){
+    	this.list.push(res.data);
+    },
   	click(){
   		this.$router.go(-1)
   	}
