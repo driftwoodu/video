@@ -17,7 +17,7 @@ import upload from './views/upload/upload.vue'
 import registration from './views/registration/registration.vue'
 import changeinformation from './views/changeinformation/changeinformation.vue'
 import search from './views/search/search.vue'
-
+import searchresult from './views/searchresult/searchresult.vue'
 
 Vue.use(Router)
 
@@ -44,6 +44,13 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: search,
+      meta:{
+        needLogin: false
+      }
+    },{
+      path: '/searchresult',
+      name: 'searchresult',
+      component: searchresult,
       meta:{
         needLogin: false
       }

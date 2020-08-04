@@ -36,7 +36,7 @@
           axios.post('http://localhost:9090/search',fd,config).then((res)=>{
               console.log(res)
           })
-
+          this.$router.push('/searchresult');
           }
 
     }
