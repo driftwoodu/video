@@ -24,7 +24,7 @@ export default{
 				loop:true,
 				sources:[{
 					type:"video/mp4",
-					src:'http://localhost:8181/'+this.videos.src
+					src:this.videos.src
 				}],
 			}
 		}

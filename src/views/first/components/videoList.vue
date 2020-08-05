@@ -91,7 +91,15 @@ export default{
 			this.componentName="comment"
 		},
 		showColor(){
-			this.loveColor=this.loveColor===false?true:false
+      if(this.loveColor === false){
+        this.loveColor = true;
+        firstRight.showColor="iconfont icon-red"
+        console.log("red")
+      }else{
+        this.loveColor = false;
+        firstRight.showColor="iconfont right-icon"
+        console.log("gray")
+      }
 		},
 		getVideos(){
 			axios.get('http://localhost:9090/getVideo',{

@@ -8,7 +8,7 @@
 				&#x6666;
 			</div>
 		</div>
-		<div :class="showColor" @click="click">
+		<div :class="showColor">
 			&#x5555;
 		</div>
 		<div class="number">{{video.likecount}}</div>
@@ -57,9 +57,6 @@ export default{
         if(res.data==false){
           this.show=false
         }
-        if(sessionStorage.getItem('id')==this.item.userid){
-          this.show=false
-        }
       })
     },
     initiate(){
@@ -94,32 +91,27 @@ export default{
 				this.show=false
 			}
 		},
-		click(){
-        if(this.showColor=this.showColor==="iconfont right-icon"){
+	},
+	watch:{
+		loveColor(){
+			if(this.showColor=this.showColor==="iconfont right-icon"){
 				this.showColor="iconfont icon-red"
 				let fd = new FormData();
 				fd.append("videoId", this.item.id);
 				fd.append("userId",sessionStorage.getItem("id"));
 				axios.post('http://localhost:9090/increaseLike',fd).then((res)=>{
-          this.video.id = res.data.id;
-          this.video.likecount = this.video.likecount + 1;
+			    this.video.id = res.data.id;
+			    this.video.likecount = this.video.likecount + 1;
 				})
 				}else{
 				this.showColor="iconfont right-icon"
-        let fd = new FormData();
-        fd.append("videoId", this.item.id);
-        fd.append("userId",sessionStorage.getItem("id"));
-        axios.post('http://localhost:9090/decreaseLike',fd).then((res)=>{
-          this.video.id = res.data.id;
-          this.video.likecount = this.video.likecount - 1;
-        })
-      }
-    }
-	},
-	watch:{
-		loveColor(){
-			if(this.showColor==="iconfont right-icon"){
-				this.showColor="iconfont icon-red"
+			  let fd = new FormData();
+			  fd.append("videoId", this.item.id);
+			  fd.append("userId",sessionStorage.getItem("id"));
+			  axios.post('http://localhost:9090/decreaseLike',fd).then((res)=>{
+			    this.video.id = res.data.id;
+			    this.video.likecount = this.video.likecount - 1;
+			  })
 			}
 		}
 	}

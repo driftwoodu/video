@@ -5,7 +5,7 @@
 				<div class="img-box">
 					<img class="author-img" src="../../../../public/img/author.jpg"/>
 				</div>
-				<div class="autor-name">
+				<div class="author-name">
 					{{item.author}}{{page}}
 				</div>
 				<div class="share">
@@ -19,7 +19,7 @@
 				<div class="videos">
 					<div class="videos-box" >
 						<videos :videos="item"></videos>
-					</div>	
+					</div>
 				</div>
 			</router-link>
 			<div class="box">
@@ -40,9 +40,9 @@
 			</div>
 			<div class="comment-text">
 				<input class='comment-input' type="text" placeholder="  #留下你的评论吧" />
-			</div>	
+			</div>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -55,24 +55,18 @@ export default{
 		videos
 	},
 	created(){
-		this.getVideo()
+		this.getFolloweeVideo();
 	},
 	methods:{
-		getVideo(){
-			axios.get('api/videos.json')
-			.then(this.getVideoSucc)
+		getFolloweeVideo(){
+      let fd = new FormData();
+      fd.append("userId",sessionStorage.getItem("id"))
+			axios.post('http://localhost:9090/getFolloweeVideoById',fd)
+			.then(this.getFolloweeSucc)
 		},
-		getVideoSucc(res){
-			if(this.page==="好友"){
-				this.list=res.data.list.slice(0,4)
-			}else{
-				if(this.page==="动态"){
-					this.list=res.data.list.slice(8,12)
-				}else{
-					this.list=res.data.list.slice(4,8)
-				}
-			}
-				
+		getFolloweeSucc(res){
+      console.log(res.data)
+				this.list=res.data
 		}
 	},
 	data(){
@@ -81,7 +75,7 @@ export default{
 			page:this.$route.query.page
 		}
 	}
-	
+
 }
 </script>
 
@@ -151,6 +145,6 @@ export default{
 			  width:95%
 			  height:.7rem
 			  background:#333
-		  
-		
+
+
 </style>
