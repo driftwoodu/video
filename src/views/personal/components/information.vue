@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<div class="router-box" v-if="user==0">
-			<router-link :to="{path:'/user',query:{listName:'works'}}">
+			<router-link :to="{path:'/user',query:{listName:'works',userid:userid}}">
 				<div class="love" >
 					作品
 				</div>
@@ -68,7 +68,7 @@
 					动态
 				</div>
 			</router-link>
-			<router-link :to="{path:'likeListUser',query:{listName:'like'}}">
+			<router-link :to="{path:'likeListUser',query:{listName:'like',userid:userid}}">
 				<div class="love">
 					喜欢
 				</div>
@@ -76,7 +76,7 @@
 
 		</div>
 		<div class="router-box" v-else>
-			<router-link :to="{path:'/worksList',query:{listName:'works'}}">
+			<router-link :to="{path:'/worksList',query:{listName:'works',userid:userid}}">
 				<div class="love" >
 					作品
 				</div>
@@ -86,7 +86,7 @@
 					动态
 				</div>
 			</router-link>
-			<router-link :to="{path:'/likeList',query:{listName:'like'}}">
+			<router-link :to="{path:'/likeList',query:{listName:'like',userid:userid}}">
 				<div class="love">
 					喜欢
 				</div>
@@ -98,8 +98,7 @@
   import axios from 'axios'
 export default{
 	name:'information',
-	props:['personalDTO'],
-
+  props:['personalDTO'],
   mounted(){
       this.nowid=sessionStorage.getItem('id')
       this.isFollowed()
@@ -132,9 +131,6 @@ export default{
       })
 		},
     changeinformation(){
-      console.log(this.personalDTO);
-      console.log(this.user);
-      console.log(this.userid);
       this.$router.push('/changeinformation');
     }
 	},

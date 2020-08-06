@@ -17,9 +17,9 @@
 			</div>
 		</div>
     </router-link>
-		<router-link to="/index/news">
+		<router-link to="/search">
 			<div class="nav-box">
-				消息
+				搜索
 			</div>
 		</router-link>
 		<router-link :to="{path:'/worksList',query:{user:'1' ,userid:this.userid}}">

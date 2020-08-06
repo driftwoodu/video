@@ -24,7 +24,7 @@ export default{
 				loop:true,
 				sources:[{
 					type:"video/mp4",
-					src:this.videos.src
+					src:"http://localhost:8181/"+this.videos.src
 				}],
 			}
 		}
@@ -57,7 +57,7 @@ export default{
 		},
 		autoplay(){
 			if(this.index===0){
-				this.playerOptions.autoplay="muted"
+
 			}
 		}
 	},

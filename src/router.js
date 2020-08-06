@@ -40,20 +40,6 @@ export default new Router({
       meta:{
         needLogin: false
       }
-    }, {
-      path: '/search',
-      name: 'search',
-      component: search,
-      meta:{
-        needLogin: false
-      }
-    },{
-      path: '/searchresult',
-      name: 'searchresult',
-      component: searchresult,
-      meta:{
-        needLogin: false
-      }
     },
     {
       path: '/index',
@@ -83,6 +69,16 @@ export default new Router({
 		      name: 'city',
 		      component: city,
 	      }]
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: search,
+      },
+      {
+        path: '/searchresult',
+        name: 'searchresult',
+        component: searchresult,
       },
       {
       	path: 'follow',

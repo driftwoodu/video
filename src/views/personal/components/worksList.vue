@@ -1,8 +1,7 @@
 <template>
 	<div class="">
 		<div id="worksList">
-
-				<div class="item" v-for="item of personalDTO.videos">
+				<div class="item" v-for="item of list">
           <router-link :to="{path:'/player',query:{itemid:item.id}}">
 					<videos :videos="item" @click.native="click"></videos>
           </router-link>
@@ -33,35 +32,38 @@ import axios from 'axios'
 import videos from '../../first/components/video.vue'
 export default{
 	name:'worksList',
-  props:['personalDTO'],
 	components:{
 		videos
 	},
 	data(){
 		return{
 			list:[],
-			listName:this.$route.query.listName
+			listName:this.$route.query.listName,
+      userid:this.$route.query.userid
 		}
 	},
-	created(){
-		//this.getvideo()
+	mounted(){
+		this.getvideo()
 	},
 	methods:{
 		click(){
 			console.log(1)
 		},
-		getvideo(){
-			axios.get('api/videos.json')
-			.then(this.getvideoSucc)
-		},
-		getvideoSucc(res){
-			if(this.listName==="like"){
-				this.list=res.data.list.slice(0,4)
-			}else{
-				this.list=res.data.list.slice(4,8)
-			}
-
-		}
+    getvideo(){
+      if(this.listName==="like"){
+      	let fd = new FormData()
+      	fd.append("userId",this.userid);
+      	axios.post('http://localhost:9090/GetLikeVideo',fd).then((res)=>{
+          this.list=res.data
+        })
+      }else{
+      	let fd = new FormData()
+      	fd.append("id",this.userid);
+      	axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+      	  this.list=res.data.videos
+      	})
+      }
+    }
 	}
 
 }

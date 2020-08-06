@@ -57,6 +57,9 @@ export default{
         if(res.data==false){
           this.show=false
         }
+        if(this.item.userid==sessionStorage.getItem('id')){
+          this.show=false
+        }
       })
     },
     initiate(){
