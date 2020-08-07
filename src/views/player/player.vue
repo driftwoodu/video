@@ -4,9 +4,6 @@
     	&#xbbbb;
     </div>
     	<videoList :videolist="list" flag='0'></videoList>
-    <div class="comment">
-    	留下你的精彩评论吧
-    </div>
   </div>
 </template>
 

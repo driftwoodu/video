@@ -8,39 +8,17 @@
 				<div class="author-name">
 					{{item.author}}{{page}}
 				</div>
-				<div class="share">
-					分享
-				</div>
 			</div>
 			<div class="title">
 				{{item.title}}
 			</div>
-			<router-link to="/player">
-				<div class="videos">
-					<div class="videos-box" >
-						<videos :videos="item"></videos>
-					</div>
-				</div>
-			</router-link>
-			<div class="box">
-				<div class="left">
-					3-20
-				</div>
-				<div class="right">
-					<div class="iconfont box-number">
-						&#x7777;{{item.shareNumber}}
-					</div>
-					<div class="iconfont box-number">
-						&#x1111;{{item.commentNumber}}
-					</div>
-					<div class="iconfont box-number">
-						&#x5555;{{item.loveNumber}}
-					</div>
-				</div>
-			</div>
-			<div class="comment-text">
-				<input class='comment-input' type="text" placeholder="  #留下你的评论吧" />
-			</div>
+      <router-link :to="{path:'/player',query:{itemid:item.id}}">
+        <div class="videos">
+        	<div class="videos-box" >
+      <videos :videos="item" @click.native="click"></videos>
+      </div>
+      </div>
+      </router-link>
 		</div>
 
 	</div>

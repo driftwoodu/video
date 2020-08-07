@@ -9,16 +9,13 @@
 					推荐
 				</span>
 			</router-link>
-			|
-			<router-link to="/index/city">
-				<span class="header-span">
-					北京
-				</span>
-			</router-link>
 		</div>
-		<div class="iconfont right">
+    <router-link to="/search">
+      <div class="iconfont right">
 			&#x2222;
 		</div>
+    </router-link>
+		
 	</div>
 </template>
 

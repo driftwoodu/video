@@ -12,10 +12,6 @@
 			&#x5555;
 		</div>
 		<div class="number">{{video.likecount}}</div>
-		<div class="iconfont right-icon" @click="openComment">
-			&#x1111;
-		</div>
-		<div class="number">{{item.commentcount}}</div>
 		<div class="iconfont right-icon" @click="openShare">
 			&#x7777;
 		</div>
