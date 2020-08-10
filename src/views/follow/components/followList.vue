@@ -39,7 +39,7 @@ export default{
 		getFolloweeVideo(){
       let fd = new FormData();
       fd.append("userId",sessionStorage.getItem("id"))
-			axios.post('http://localhost:9090/getFolloweeVideoById',fd)
+			axios.post('sys/getFolloweeVideoById',fd)
 			.then(this.getFolloweeSucc)
 		},
 		getFolloweeSucc(res){

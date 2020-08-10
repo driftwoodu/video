@@ -34,7 +34,7 @@
     methods: {
       login() {
         const self = this;
-        axios.get('http://localhost:9090/login').then(response => {
+        axios.get('/sys/login').then(response => {
           var res = response.data;
           console.log(response);
           var len = res.length;

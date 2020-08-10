@@ -63,7 +63,7 @@
               'Content-Type': 'multipart/form-data'
             }
           }
-          axios.post('http://localhost:9090/search',fd,config).then((res)=>{
+          axios.post('sys/search',fd,config).then((res)=>{
               this.list=res.data
           })
         }

@@ -53,13 +53,13 @@ export default{
       if(this.listName==="like"){
       	let fd = new FormData()
       	fd.append("userId",this.userid);
-      	axios.post('http://localhost:9090/GetLikeVideo',fd).then((res)=>{
+      	axios.post('sys/GetLikeVideo',fd).then((res)=>{
           this.list=res.data
         })
       }else{
       	let fd = new FormData()
       	fd.append("id",this.userid);
-      	axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+      	axios.post('sys/getPersonalPageById',fd).then((res)=>{
       	  this.list=res.data.videos
       	})
       }

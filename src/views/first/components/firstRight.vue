@@ -48,7 +48,7 @@ export default{
       let fd = new FormData();
       fd.append("followed", this.item.userid);
       fd.append("follower", sessionStorage.getItem('id'));
-      axios.post('http://localhost:9090/isFollowed',fd).then((res)=>{
+      axios.post('sys/isFollowed',fd).then((res)=>{
         console.log(res.data)
         if(res.data==false){
           this.show=false
@@ -62,7 +62,7 @@ export default{
       let fd = new FormData;
       fd.append("id",this.item.id);
       fd.append("userId",sessionStorage.getItem("id"));
-      axios.post('http://localhost:9090/getVideoById',fd).then((res)=>{
+      axios.post('sys/getVideoById',fd).then((res)=>{
       this.video.id = res.data.id;
       this.video.likecount = res.data.likecount;
       if(res.data.ifUserLiked === true){
@@ -83,7 +83,7 @@ export default{
       fd.append("followed", this.item.userid);
       fd.append("follower", sessionStorage.getItem('id'));
       fd.append("isFollow",false);
-      axios.post('http://localhost:9090/follow',fd).then((res)=>{
+      axios.post('sys/follow',fd).then((res)=>{
         console.log("8498191561691")
       })
 			if(this.show===true){
@@ -98,7 +98,7 @@ export default{
 				let fd = new FormData();
 				fd.append("videoId", this.item.id);
 				fd.append("userId",sessionStorage.getItem("id"));
-				axios.post('http://localhost:9090/increaseLike',fd).then((res)=>{
+				axios.post('sys/increaseLike',fd).then((res)=>{
 			    this.video.id = res.data.id;
 			    this.video.likecount = this.video.likecount + 1;
 				})
@@ -107,7 +107,7 @@ export default{
 			  let fd = new FormData();
 			  fd.append("videoId", this.item.id);
 			  fd.append("userId",sessionStorage.getItem("id"));
-			  axios.post('http://localhost:9090/decreaseLike',fd).then((res)=>{
+			  axios.post('sys/decreaseLike',fd).then((res)=>{
 			    this.video.id = res.data.id;
 			    this.video.likecount = this.video.likecount - 1;
 			  })

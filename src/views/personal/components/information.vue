@@ -109,7 +109,7 @@ export default{
         let fd = new FormData();
         fd.append("followed", this.userid);
         fd.append("follower", sessionStorage.getItem('id'));
-        axios.post('http://localhost:9090/isFollowed',fd).then((res)=>{
+        axios.post('sys/isFollowed',fd).then((res)=>{
           console.log(res.data)
           if(res.data==false){
             this.changeStyle="change"
@@ -127,7 +127,7 @@ export default{
       fd.append("followed", this.userid);
       fd.append("follower", sessionStorage.getItem('id'));
       fd.append("isFollow",this.show);
-      axios.post('http://localhost:9090/follow',fd).then((res)=>{
+      axios.post('sys/follow',fd).then((res)=>{
       })
 		},
     changeinformation(){

@@ -127,7 +127,7 @@ export default{
           'Content-Type': 'multipart/form-data'
         }
       }
-      axios.post('http://localhost:9090/comment',fd,config).then((res)=>{
+      axios.post('sys/comment',fd,config).then((res)=>{
           console.log(res)
       })
       //this.$router.go(0);

@@ -43,7 +43,7 @@ import axios from 'axios'
                 var self = this;
                 let fd = new FormData();
                 fd.append("id", this.userid);
-                axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+                axios.post('sys/getPersonalPageById',fd).then((res)=>{
                 this.personalDTO = res.data;
 
                 })
@@ -53,7 +53,7 @@ import axios from 'axios'
                 var self = this;
                 let fd = new FormData();
                 fd.append("id",sessionStorage.getItem('id'));
-                axios.post('http://localhost:9090/getPersonalPageById',fd).then((res)=>{
+                axios.post('sys/getPersonalPageById',fd).then((res)=>{
                 this.personalDTO = res.data;
 
                 })

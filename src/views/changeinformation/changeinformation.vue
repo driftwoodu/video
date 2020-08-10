@@ -62,7 +62,7 @@
               'Content-Type': 'multipart/form-data'
             }
           }
-          axios.post('http://localhost:9090/changeinformation',fd,config).then((res)=>{
+          axios.post('sys/changeinformation',fd,config).then((res)=>{
               console.log(res)
           })
           this.$router.push('/index/personal');

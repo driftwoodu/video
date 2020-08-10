@@ -102,7 +102,7 @@ export default{
       }
 		},
 		getVideos(){
-			axios.get('http://localhost:9090/getVideo',{
+			axios.get('sys/getVideo',{
         params:{
 
         }

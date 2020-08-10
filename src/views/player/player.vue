@@ -29,7 +29,7 @@ export default {
     getVideos(){
       let fd = new FormData();
       fd.append("videoid", this.itemid);
-    	axios.post('http://localhost:9090/getVideoByVideoId',fd,{
+    	axios.post('sys/getVideoByVideoId',fd,{
         params:{
 
         }

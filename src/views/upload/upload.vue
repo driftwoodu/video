@@ -138,7 +138,7 @@
           formData.append("title", title.value);
           formData.append("author", sessionStorage.getItem('user'))
           formData.append("id", sessionStorage.getItem('id'))
-          Axios.post < ChunkUploadResult > ('http://localhost:9090/api/fileupload', formData)
+          Axios.post < ChunkUploadResult > ('sys/api/fileupload', formData)
             .catch((reason) => console.error(`error: ${JSON.stringify(reason)}`))
             .then((res) => {
               if (typeof res === "object") {
