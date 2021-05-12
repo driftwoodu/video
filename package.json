@@ -18,7 +18,7 @@
     "less-loader": "^6.2.0",
     "lodash": "^4.17.15",
     "qs": "^6.9.4",
-    "swiper": "^4.5.1",
+    "swiper": "^6.5.1",
     "vshare": "^2.0.0",
     "vue": "^2.6.11",
     "vue-awesome-swiper": "^3.1.3",
